@@ -1,4 +1,6 @@
 import numbers
+import re
+
 from unicodedata import name
 from telegram.ext import Updater
 from telegram.ext import CallbackContext
@@ -167,11 +169,12 @@ def createkey(update: Update, context: CallbackContext):
         NumberOfKey = msg[2]
         NumberOfKeys = int(NumberOfKey)
         generatedkeys = ""
-
-        tokeninputs = datetime.strptime(UserTimeInput, '%Y-%m-%d')
-        tokeninputF = datetime.timestamp(tokeninputs)
-        tokeninput = int(tokeninputF)
-
+        if "-" in UserTimeInput:
+            tokeninputs = datetime.strptime(UserTimeInput, '%Y-%m-%d')
+            tokeninputF = datetime.timestamp(tokeninputs)
+            tokeninput = int(tokeninputF)
+        else:
+            tokeninput = UserTimeInput
         try:
             while NumberOfKeys > 0:
                 NumberOfKeys = NumberOfKeys - 1
@@ -390,7 +393,7 @@ def main():
     #dispatcher.add_handler(methods_handler)
     dispatcher.add_handler(help_handler)
     updater.start_polling()
-    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.3")
+    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.5")
 
 
 if __name__ == '__main__':
