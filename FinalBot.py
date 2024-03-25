@@ -20,7 +20,7 @@ from telegram import ReplyKeyboardMarkup
 import calendar
 import time
 
-token = "7176190122:AAGvx6vbf1qXg805fdFA5A7BaDwTk7WBrC0"
+token = "7176190122:AAF9sb78SyB0KP4V7FQQJvEvosLo6CSTFPA"
 
 admins = [1781676187]
 debug = True
@@ -163,47 +163,59 @@ def redeem(update: Update, context: CallbackContext):
 def createkey(update: Update, context: CallbackContext):
     if (update.effective_user.id in admins):
         msg = str(update.message.text).split()
-        tokeninput = msg[1]
+        UserTimeInput = msg[1]
+        NumberOfKey = msg[2]
+        NumberOfKeys = int(NumberOfKey)
+        generatedkeys = ""
+
+        tokeninputs = datetime.strptime(UserTimeInput, '%Y-%m-%d')
+        tokeninputF = datetime.timestamp(tokeninputs)
+        tokeninput = int(tokeninputF)
+
         try:
-            userid = update.effective_user.id
-            a = random.randint(1, 9)
-            b = random.randint(1, 9)
-            c = random.randint(1, 9)
-            d = random.randint(1, 9)
-            x = random.randint(1, 9)
+            while NumberOfKeys > 0:
+                NumberOfKeys = NumberOfKeys - 1
+                userid = update.effective_user.id
+                a = random.randint(1, 9)
+                b = random.randint(1, 9)
+                c = random.randint(1, 9)
+                d = random.randint(1, 9)
+                x = random.randint(1, 9)
 
-            e = random.randint(1, 9)
-            f = random.randint(1, 9)
-            g = random.randint(1, 9)
-            h = random.randint(1, 9)
-            i = random.randint(1, 9)
+                e = random.randint(1, 9)
+                f = random.randint(1, 9)
+                g = random.randint(1, 9)
+                h = random.randint(1, 9)
+                i = random.randint(1, 9)
 
-            j = random.randint(1, 9)
-            k = random.randint(1, 9)
-            l = random.randint(1, 9)
-            m = random.randint(1, 9)
-            n = random.randint(1, 9)
+                j = random.randint(1, 9)
+                k = random.randint(1, 9)
+                l = random.randint(1, 9)
+                m = random.randint(1, 9)
+                n = random.randint(1, 9)
 
-            front = "DDoS-" + tokeninput + "-"
+                front = "DDoS-" + str(tokeninput) + "-"
 
-            generatedkey = front + str(a) + str(b) + str(c) + str(d) + str(x) + "-" + str(e) + str(f) + str(g) + str(
-                h) + str(i) + "-" + str(j) + str(k) + str(l) + str(m) + str(n)
+                generatedkey = front + str(a) + str(b) + str(c) + str(d) + str(x) + "-" + str(e) + str(f) + str(g) + str(
+                    h) + str(i) + "-" + str(j) + str(k) + str(l) + str(m) + str(n)
 
-            mydb = mysql.connector.connect(
-                host="sql6.freesqldatabase.com",
-                user="sql6693860",
-                password="flANs4ibKm",
-                database="sql6693860"
-            )
-            mycursor = mydb.cursor()
+                mydb = mysql.connector.connect(
+                    host="sql6.freesqldatabase.com",
+                    user="sql6693860",
+                    password="flANs4ibKm",
+                    database="sql6693860"
+                )
+                mycursor = mydb.cursor()
 
-            sql = "INSERT INTO keyz (licensekey, userid, tokens) VALUES (%s, %s, %s)"
-            val = (f"{generatedkey}", f"{userid}", f"{tokeninput}")
+                sql = "INSERT INTO keyz (licensekey, userid, tokens) VALUES (%s, %s, %s)"
+                val = (f"{generatedkey}", f"{userid}", f"{str(tokeninput)}")
 
-            mycursor.execute(sql, val)
-            mydb.commit()
-            mydb.close()
-            update.message.reply_text(f"{generatedkey}", parse_mode=ParseMode.HTML)
+                mycursor.execute(sql, val)
+                mydb.commit()
+                mydb.close()
+                generatedkeys = generatedkey + "\n" + generatedkeys
+
+            update.message.reply_text(f"{generatedkeys}", parse_mode=ParseMode.HTML)
         except:
             update.message.reply_text("🔴Unable To Create Redeem Code Right Now. Please Contact Developer \nCorrect Way:- /createekey <tokenamount>", parse_mode=ParseMode.HTML)
     else:
@@ -252,11 +264,8 @@ def attack(update: Update, context: CallbackContext):
 
         serverVal = int(endresult) - CurrentTime
 
-        print("1")
-        if serverVal > 0 or int(endresult) < 1000:
-            print("2")
+        if serverVal > 0 or int(endresult) < 2000:
             if int(endresult) > 0:
-                print("3")
                 try:
                     update.message.reply_text("📝 <b>Please Enter Your Match Ip Address</b>" + '' + "",
                                             parse_mode=ParseMode.HTML)
@@ -264,12 +273,25 @@ def attack(update: Update, context: CallbackContext):
                 except:
                     update.message.reply_text("🔴Please Enter Correct Command.🔴")
             else:
-                print("4")
                 update.message.reply_text(
                     "<b>You Dont Have Enough Balance In Your Wallet To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
                     parse_mode=ParseMode.HTML)
         else:
-            print("5")
+            mydb = mysql.connector.connect(
+                host="sql6.freesqldatabase.com",
+                user="sql6693860",
+                password="flANs4ibKm",
+                database="sql6693860"
+            )
+
+            mycursor = mydb.cursor()
+            sql = f"UPDATE users SET tokens = 0 WHERE userid = '{userid}'"
+            mycursor.execute(sql)
+            ape = mycursor.fetchone()
+            endresult = ape[0]
+            mydb.commit()
+            mydb.close()
+
             update.message.reply_text(
                 "<b>Your Wallet Money Has Been Expired. Please Renew It To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
                 parse_mode=ParseMode.HTML)
