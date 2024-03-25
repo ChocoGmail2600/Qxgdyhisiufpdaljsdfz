@@ -321,7 +321,7 @@ def part2(update, context):
 def part3(update, context):
     new_part3 = update.message.text
     context.user_data[part3] = new_part3
-    #update.message.reply_text("📝 <b>Now enter the Method.</b>" + '\n' + "⤷ Ex: HOME", parse_mode=ParseMode.HTML)
+    update.message.reply_text("<b>Send Any Message To Confirm And Start Attack AnyTime You Wish.</b>" + '\n' + "", parse_mode=ParseMode.HTML)
     return PART4
 
 
@@ -339,7 +339,7 @@ def part4(update, context):
         if True:
             if int(time) > 200:
                 update.message.reply_text(
-                    f'<b>🟥Enter Enter Correct Time In Seconds Within The Maximum Time Limit💎' + '\n' + "<u>📡 Maximum Time:- 200 seconds🏆</u>")
+                    f'<b>🟥Please Enter Correct Time In Seconds Within The Maximum Time Limit💎' + '\n' + "<u>📡 Maximum Time:- 200 seconds🏆</u>")
                 return ConversationHandler.END
             else:
                 res = check_bal(update.effective_user.id)
@@ -393,7 +393,7 @@ def main():
     #dispatcher.add_handler(methods_handler)
     dispatcher.add_handler(help_handler)
     updater.start_polling()
-    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.5")
+    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.6")
 
 
 if __name__ == '__main__':
