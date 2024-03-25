@@ -20,7 +20,7 @@ from telegram import ReplyKeyboardMarkup
 import calendar
 import time
 
-token = "7176190122:AAElNIxAFH6n4zxbb5hRLlScXi8iS5--JhU"
+token = "7176190122:AAGvx6vbf1qXg805fdFA5A7BaDwTk7WBrC0"
 
 admins = [1781676187]
 debug = True
@@ -368,7 +368,7 @@ def main():
     #dispatcher.add_handler(methods_handler)
     dispatcher.add_handler(help_handler)
     updater.start_polling()
-    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.2")
+    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.3")
 
 
 if __name__ == '__main__':
