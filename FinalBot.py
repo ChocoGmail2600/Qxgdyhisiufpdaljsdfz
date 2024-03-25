@@ -17,8 +17,10 @@ import mysql.connector
 import MySQLdb
 from datetime import datetime
 from telegram import ReplyKeyboardMarkup
+import calendar
+import time
 
-token = "7176190122:AAHEkGMIVfnWGRVne2wUI-drCylhc8p_g88"
+token = "7176190122:AAElNIxAFH6n4zxbb5hRLlScXi8iS5--JhU"
 
 admins = [1781676187]
 debug = True
@@ -214,7 +216,7 @@ def createkey(update: Update, context: CallbackContext):
 # main
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
+        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
 
 
 def methods(update: Update, context: CallbackContext):
@@ -231,6 +233,8 @@ PART4 = range(4)
 def attack(update: Update, context: CallbackContext):
     userid = update.effective_user.id
     msg = str(update.message.text).split()
+    CurrentTime = calendar.timegm(time.gmtime())
+
     try:
         mydb = mysql.connector.connect(
             host="sql6.freesqldatabase.com",
@@ -246,16 +250,28 @@ def attack(update: Update, context: CallbackContext):
         mydb.commit()
         mydb.close()
 
-        if int(endresult) > 0:
-            try:
-                update.message.reply_text("📝 <b>Please Enter Your Match Ip Address</b>" + '' + "",
-                                          parse_mode=ParseMode.HTML)
-                return PART1
-            except:
-                update.message.reply_text("🔴Please Enter Correct Command.🔴")
+        serverVal = int(endresult) - CurrentTime
+
+        print("1")
+        if serverVal > 0 or int(endresult) < 1000:
+            print("2")
+            if int(endresult) > 0:
+                print("3")
+                try:
+                    update.message.reply_text("📝 <b>Please Enter Your Match Ip Address</b>" + '' + "",
+                                            parse_mode=ParseMode.HTML)
+                    return PART1
+                except:
+                    update.message.reply_text("🔴Please Enter Correct Command.🔴")
+            else:
+                print("4")
+                update.message.reply_text(
+                    "<b>You Dont Have Enough Balance In Your Wallet To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
+                    parse_mode=ParseMode.HTML)
         else:
+            print("5")
             update.message.reply_text(
-                "<b>You Dont Have Enough Balance In Your Wallet To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
+                "<b>Your Wallet Money Has Been Expired. Please Renew It To Start Attack🤕</b>" + '\n' + "<u>Please Contact Our Sellers To Buy Redeem Code💷</u>",
                 parse_mode=ParseMode.HTML)
     except:
         update.message.reply_text(
@@ -319,7 +335,7 @@ def part4(update, context):
 
 def help(update: Update, context: CallbackContext):
     update.message.reply_text(
-                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match💥 \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
+                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
 
 
 def main():
@@ -352,7 +368,7 @@ def main():
     #dispatcher.add_handler(methods_handler)
     dispatcher.add_handler(help_handler)
     updater.start_polling()
-    print("Telegram DDoS Bot Server Is Online & Working Fine!")
+    print("Telegram DDoS Bot Server Is Online & Working Fine! \n Version Of Bot:- v1.2")
 
 
 if __name__ == '__main__':
