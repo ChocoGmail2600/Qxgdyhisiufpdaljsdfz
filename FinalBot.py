@@ -20,7 +20,7 @@ from telegram import ReplyKeyboardMarkup
 import calendar
 import time
 
-token = "7176190122:AAF9sb78SyB0KP4V7FQQJvEvosLo6CSTFPA"
+token = "7176190122:AAGwg8W-JxJKJ7Pi3EzdHENar51cSYHwfb4"
 
 admins = [1781676187]
 debug = True
