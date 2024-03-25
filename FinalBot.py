@@ -20,7 +20,7 @@ from telegram import ReplyKeyboardMarkup
 import calendar
 import time
 
-token = "7176190122:AAGwg8W-JxJKJ7Pi3EzdHENar51cSYHwfb4"
+token = "7176190122:AAGiLdJIu_P_tlzBQwvvVCOn1wOGSj-EcG4"
 
 admins = [1781676187]
 debug = True
@@ -228,7 +228,7 @@ def createkey(update: Update, context: CallbackContext):
 # main
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
-        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
+        f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/Serex_Botnet 🧾")
 
 
 def methods(update: Update, context: CallbackContext):
@@ -357,7 +357,7 @@ def part4(update, context):
 
 def help(update: Update, context: CallbackContext):
     update.message.reply_text(
-                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/CRACKWAR 🧾")
+                f"💟Welcome To Serex DDoS BoT😈 \n \n 👑Telegram's First Most Advance And Premium DDoS Bot Server🥇 \n\n 💨You can control me by sending these commands:- \n \n👉 /attack:- Start Attack On Your Match. \n 👉 /redeem:- Redeem Your Code💷 \n 👉 /Balance:- check available number of ddos attack💰 \n \n💳Purchase Redeem Code From Official Sellers:- https://t.me/Serex_Botnet 🧾")
 
 
 def main():
